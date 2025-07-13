@@ -18,7 +18,7 @@
   <meta name="author" content="Łukasz Holeczek">
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
   <meta name="google-site-verification" content="83fcqoPn-YTkXathQiicW-x3U2RWZh4PaPUzk91wtjY" />
-  <title>Project Manager - Gui</title>
+  <title>Project Manager - WorkOrbit</title>
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
@@ -36,7 +36,7 @@
     <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <img src="{% static 'core/img/logos/gui-horizontal.png' %}" alt="" class="brand-gui ml-2 d-none d-sm-block p-2">
+    <img src="{% static 'core/img/logos/logo3.jpg' %}" alt="" class="brand-gui ml-2 d-none d-sm-block p-2">
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -203,13 +203,7 @@
         {% endblock breadcrumb%}
 
         <!-- Breadcrumb Menu-->
-        <li class="breadcrumb-menu d-md-down-none">
-          <div class="btn-group" role="group" aria-label="Button group">
-            <a class="btn" href="#"><i class="fa fa-comments"></i></a>
-            <a class="btn" href="./"><i class="fa fa-tachometer-alt"></i> &nbsp;Dashboard</a>
-            <a class="btn" href="#"><i class="fa fa-cog"></i> &nbsp;Settings</a>
-          </div>
-        </li>
+         
       </ol>
 {% block content %}
 {% endblock %}
@@ -279,16 +273,10 @@
           <div class="message">
             <div class="py-3 pb-5 mr-3 float-left">
               <div class="avatar">
-                <img src="{{ user.img.url }}" class="img-avatar" alt="person_name">
+                 
                 <span class="avatar-status badge-success"></span>
               </div>
             </div>
-            <div>
-              <small class="text-muted">Person Name</small>
-              <small class="text-muted float-right mt-1">1:52 PM</small>
-            </div>
-            <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
-            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
           </div>
         </div>
 
@@ -306,9 +294,7 @@
                 <span class="switch-handle"></span>
               </label>
             </div>
-            <div>
-              <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
-            </div>
+             
           </div>
 
           <div class="aside-options">
@@ -320,9 +306,7 @@
                 <span class="switch-handle"></span>
               </label>
             </div>
-            <div>
-              <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
-            </div>
+            
           </div>
 
           <div class="aside-options">

@@ -43,7 +43,10 @@ def send_message(request, task_id):
         # Save or send the message — implement as needed
         print(f"Message sent: {message}")  # for now, just print or log it
     return redirect(f'/projects/tasks/?task_id={task_id}')
+
 def tasks(request):
+    if not request.user.is_authenticated:
+        return redirect('core:login')
     all_tasks = Task.objects.all()
     tasks = all_tasks.filter(assign=request.user)
 

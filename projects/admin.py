@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import Project
 from .models import Task
+from .models import Comment
+from .models import Message
 
 # Register your models here.
 
@@ -22,3 +24,5 @@ class TaskAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Task, TaskAdmin)
+admin.site.register(Comment)
+admin.site.register(Message)

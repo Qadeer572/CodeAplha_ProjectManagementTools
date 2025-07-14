@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="display: flex; height: 100vh; font-family: Arial, sans-serif;">
+
+    <!-- Sidebar: List of Tasks -->
+    <div style="width: 25%; background-color: #f0f2f5; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.05);">
+        <h3 style="margin-bottom: 20px;">Your Tasks</h3>
+        <ul style="list-style: none; padding-left: 0;">
+            {% for task in tasks %}
+            <li style="margin-bottom: 10px;">
+                <a href="?task_id={{ task.id }}"
+                   style="display: block; padding: 10px 14px; text-decoration: none; color: #007bff; border-radius: 6px; transition: 0.2s;"
+                   onmouseover="this.style.backgroundColor='#e9f5ff'; this.style.color='#0056b3';"
+                   onmouseout="this.style.backgroundColor=''; this.style.color='#007bff';">
+                    {{ task.task_name }}
+                </a>
+            </li>
+            {% empty %}
+                <li>No tasks assigned.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Main Area: Task Detail -->
+    <div style="flex-grow: 1; padding: 30px;">
+        {% if selected_task %}
+            <h2 style="margin-bottom: 10px;">{{ selected_task.title }}</h2>
+            <p style="color: #555; margin-bottom: 30px;">{{ selected_task.description }}</p>
+
+            <!-- Comments Section -->
+            <h4 style="margin-bottom: 10px;">Comments</h4>
+            {% if comments %}
+            <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; border-radius: 6px; margin-bottom: 20px; background-color: #fff;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    {% for comment in comments %}
+                        <li style="margin-bottom: 6px;"><strong>{{ comment.user.username }}:</strong> {{ comment.text }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% else %}
+                <p style="color: #777;">No comments yet.</p>
+            {% endif %}
+
+            <!-- Add Comment -->
+            <form method="post" action="/projects/tasks/{{ selected_task.id }}/comment/" style="margin-bottom: 30px;">
+                {% csrf_token %}
+                <textarea name="comment" rows="3" cols="60" placeholder="Add a comment..." required
+                          style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; width: 100%; box-sizing: border-box;"></textarea><br>
+                <button type="submit"
+                        style="margin-top: 10px; padding: 8px 16px; background-color: #007bff; border: none; color: white; border-radius: 4px; cursor: pointer;">
+                    Submit Comment
+                </button>
+            </form>
+
+            <hr style="margin: 40px 0;">
+
+            <!-- Messages Section -->
+            <h4 style="margin-bottom: 10px;">Messages</h4>
+            {% if messages %}
+            <div style="max-height: 250px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 6px; margin-bottom: 20px; background-color: #fff;">
+                <ul style="margin: 0; padding-left: 20px;">
+                    {% for message in messages %}
+                        <li style="margin-bottom: 6px;">
+                            <strong>{{ message.sender.username }}:</strong>
+                            {{ message.content }} <br>
+                            <small style="color: gray;">{{ message.timestamp }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% else %}
+                <p style="color: #777;">No messages yet.</p>
+            {% endif %}
+
+            <!-- Send Message -->
+            <form method="post" action="/projects/tasks/{{ selected_task.id }}/message/">
+                {% csrf_token %}
+                <textarea name="message" rows="3" cols="60" placeholder="Type a message..." required
+                          style="padding: 10px; border-radius: 6px; border: 1px solid #ccc; width: 100%; box-sizing: border-box;"></textarea><br>
+                <button type="submit"
+                        style="margin-top: 10px; padding: 8px 16px; background-color: #28a745; border: none; color: white; border-radius: 4px; cursor: pointer;">
+                    Send Message
+                </button>
+            </form>
+
+        {% else %}
+            <p style="color: #888;">Please select a task from the left.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

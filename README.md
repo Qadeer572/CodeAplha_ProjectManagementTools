@@ -19,7 +19,7 @@ A full-stack **Django** web application for managing companies, projects, tasks,
 |---|---|
 | Backend | Django 2.0 (Python 3.8) |
 | Database | SQLite (development), PostgreSQL (production via `dj-database-url`) |
-| Static/Media Storage | AWS S3 (`django-storages`, `boto3`) |
+| Static/Media Storage | `django-storages`|
 | Deployment | Heroku (`gunicorn`, `Procfile`) |
 | Image Handling | Pillow |
 | Forms | Django Forms, `django-multiselectfield` |
